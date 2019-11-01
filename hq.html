@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function populate(s1,s2,s3){
+	var s1 = document.getElementById(s1);
+	var s2 = document.getElementById(s2);
+	s2.innerHTML = "";
+    var d=new Date();
+    day=d.getDate();
+
+    next=(day+1)%31;
+    next2=(day+2)%31;
+ 
+    
+	if(s1.value == "pvr"){
+		var optionArray = [ day,next,next2];
+		var x=optionArray.toString();
+		var x1=x.split(",");
+	} else if(s1.value == "inox"){
+		var optionArray = [ day,next,next2];
+		var x=optionArray.toString();
+		var x1=x.split(",");
+	} else if(s1.value == "bharat"){
+		var optionArray = [ day,next,next2];
+		var x=optionArray.toString();
+		var x1=x.split(",");
+	}
+
+
+
+	
+		
+		for(var op=0; op<3; op++)
+		{
+			var newop = document.createElement("option");
+				newop.appendChild( document.createTextNode(x1[op]) );
+		
+
+
+		s2.appendChild(newop); 
+
+ }
+ 
+}
+ 
+
+    
+function doit(s21,s3)
+{
+ document.getElementById("slct3").innerHTML = "";
+ var d=new Date(); 
+ var din=d.getDate();  
+ var smd=d.getHours();
+
+ var mts=d.getMinutes();
+
+ var hr=[];
+ var min=[];
+var e=document.getElementById(s21)
+	 var opty=["2:30","10:30","13:30","18:30","22:30"]
+	s3=document.getElementById(s3)
+
+for(zz=0;zz<5;zz++)
+{
+	var pain=opty[zz].split(":");
+	
+	hr.push(parseInt(pain[0]));
+	min.push(parseInt(pain[1]));
+} 
+
+var strUser = e.options[e.selectedIndex].innerHTML;
+
+if(strUser>din){
+   for (var t = 0; t < opty.length; t++) 
+   {
+		var newop1 = document.createElement("option");
+		newop1.appendChild( document.createTextNode(opty[t]));
+		s3.appendChild(newop1); 
+	}
+
+}
+if(strUser==din) {
+			var c=0;
+			
+		for(var j=0; j<hr.length; j++)
+	{
+		if(smd>hr[j]){
+			
+		c=c+1;}	
+		else if(smd==hr[j])
+		{
+			if(mts>min[j])
+			{
+				c=c+1;
+			}
+		}
+		
+			
+		
+	}
+}
+
+	for (var t = c; t < hr.length; t++) {
+		var newop1 = document.createElement("option");
+				newop1.appendChild( document.createTextNode(opty[t]));
+		
+
+
+		s3.appendChild(newop1); 
+	}
+
+
+
+} 
+
+				
+
+
+	
+</script>
+</head>
+<body>
+<h2>Choose Your movie</h2>
+<hr />
+Choose CINEMA:
+<select id="slct1" name="slct1" onchange="populate(this.id,'slct2','slct3');doit('slct2','slct3');">
+  <option value=""></option>
+   <option value="pvr">pvr</option>
+   <option value="inox">inox</option>
+   <option value="bharat">bharat</option>
+  
+</select>
+<hr />
+Choose DAY:
+<select id="slct2" onchange="doit(this.id,'slct3')"></select>
+
+<hr />
+CHOOSE Slot:
+<select id="slct3"></select>
+<hr/>
+CHOOSE SEATS:
+<select id="slct4">
+
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+  
+ 
+
+  
+</select>
+<hr/>
+ <button type="submit" class="sdd">SIGN IN</button>
+	
+
+
+			
+
+		
+		
+	
+
+
+		
+		 
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+         
+	 
+	
+
+
+ 
+
+    
+    
+
+
+  
+
+
